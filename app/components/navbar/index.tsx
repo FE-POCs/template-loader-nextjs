@@ -8,7 +8,7 @@ export default function Navbar() {
         <div className="flex flex-1">
           <a
             href="/"
-            className="-m-1.5 p-1.5 font-semibold leading-6 text-gray-900"
+            className="-m-1.5 p-1.5 font-semibold text-xl leading-6 text-indigo-900"
           >
             Appointy
           </a>

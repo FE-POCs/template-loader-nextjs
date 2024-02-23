@@ -1,5 +1,5 @@
-import { getRolePageConfig } from "@/api";
-import dynamic from "next/dynamic";
+import getDynamicComponentForRoleNPage from "../dynamicComponentExport";
+import { Suspense } from "react";
 
 function DefaultContact() {
   return (
@@ -12,13 +12,10 @@ function DefaultContact() {
 }
 
 export default async function Contact() {
-  const contact = await getRolePageConfig(3, "contact");
-  const path = `../components/${contact.path}`;
-  console.log("about test ==> ", path);
-  const ActualContact =
-    dynamic(() => import(path), {
-      loading: () => <DefaultContact />,
-    }) || DefaultContact;
-  console.log("cnt", ActualContact);
-  return <ActualContact />;
+  const ActualContact = await getDynamicComponentForRoleNPage(1, "contact");
+  return (
+    <Suspense fallback={<DefaultContact />}>
+      <ActualContact />
+    </Suspense>
+  );
 }

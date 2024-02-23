@@ -1,5 +1,5 @@
-import { getRolePageConfig } from "@/api";
-import dynamic from "next/dynamic";
+import { Suspense } from "react";
+import getDynamicComponentForRoleNPage from "../dynamicComponentExport";
 
 function DefaultAbout() {
   return (
@@ -12,13 +12,10 @@ function DefaultAbout() {
 }
 
 export default async function About() {
-  const about = await getRolePageConfig(2, "about");
-  const path = `../components/${about.path}`;
-  console.log("about test ==> ", path);
-  const ActualAbout =
-    dynamic(() => import(path), {
-      loading: () => <DefaultAbout />,
-    }) || DefaultAbout;
-  console.log("abt", ActualAbout);
-  return <ActualAbout />;
+  const ActualAbout = await getDynamicComponentForRoleNPage(2, "about");
+  return (
+    <Suspense fallback={<DefaultAbout />}>
+      <ActualAbout />
+    </Suspense>
+  );
 }

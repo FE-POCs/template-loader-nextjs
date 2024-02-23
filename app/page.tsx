@@ -1,5 +1,5 @@
-import { getRolePageConfig } from "@/api";
-import dynamic from "next/dynamic";
+import { Suspense } from "react";
+import getDynamicComponentForRoleNPage from "./dynamicComponentExport";
 
 function DefaultHome() {
   return (
@@ -12,11 +12,10 @@ function DefaultHome() {
 }
 
 export default async function Home() {
-  const home = await getRolePageConfig(3, "home");
-  const path = `./components/${home.path}`;
-  console.log("home test ==> ", path);
-  const ActualHome = dynamic(() => import(`${path}`), {
-    loading: () => <DefaultHome />,
-  });
-  return <ActualHome />;
+  const ActualHome = await getDynamicComponentForRoleNPage(3, "home");
+  return (
+    <Suspense fallback={<DefaultHome />}>
+      <ActualHome />
+    </Suspense>
+  );
 }
