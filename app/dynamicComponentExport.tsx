@@ -6,7 +6,7 @@ export default async function getDynamicComponentForRoleNPage(
   page: string
 ) {
   const pageObj = await getRolePageConfig(roleId, page);
-  const path = `./components/${pageObj.path}`;
+  const path = `./templates/${pageObj.path}`;
   const PathComponent = dynamic(() => import(`${path}`));
   return PathComponent;
 }

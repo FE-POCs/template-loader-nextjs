@@ -14,6 +14,12 @@ export default function Navbar() {
           </a>
         </div>
         <div className="flex gap-x-12">
+          <a
+            href="/admin"
+            className="text-sm font-semibold leading-6 text-gray-900"
+          >
+            Admin
+          </a>
           <a href="/" className="text-sm font-semibold leading-6 text-gray-900">
             Home
           </a>
