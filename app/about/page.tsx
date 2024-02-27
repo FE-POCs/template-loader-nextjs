@@ -12,7 +12,7 @@ function DefaultAbout() {
 }
 
 export default async function About() {
-  const ActualAbout = await getDynamicComponentForRoleNPage(2, "about");
+  const ActualAbout = await getDynamicComponentForRoleNPage("about");
   return (
     <Suspense fallback={<DefaultAbout />}>
       <ActualAbout />

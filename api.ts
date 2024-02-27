@@ -7,6 +7,7 @@ export async function getRolePageConfig(id = 1, page = 'home') {
     const user: any =  await getUser(id);
     if (user) {
       const data = await fetch(`http://localhost:8000/api/templates/${user.role}/${page}`);
-      return await data.json();
+      const role = await data.json();
+      return {...user, ...role }
     }
   }

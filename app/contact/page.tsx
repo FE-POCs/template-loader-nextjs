@@ -12,7 +12,7 @@ function DefaultContact() {
 }
 
 export default async function Contact() {
-  const ActualContact = await getDynamicComponentForRoleNPage(1, "contact");
+  const ActualContact = await getDynamicComponentForRoleNPage("contact");
   return (
     <Suspense fallback={<DefaultContact />}>
       <ActualContact />

@@ -12,10 +12,7 @@ function DefaultAdmin() {
 }
 
 export default async function Admin() {
-  const AdminTemplate = await getDynamicComponentForRoleNPage(
-    1,
-    "sai-template"
-  );
+  const AdminTemplate = await getDynamicComponentForRoleNPage("sub-template1");
   return (
     <Suspense fallback={<DefaultAdmin />}>
       <AdminTemplate />

@@ -12,7 +12,7 @@ function DefaultHome() {
 }
 
 export default async function Home() {
-  const ActualHome = await getDynamicComponentForRoleNPage(3, "home");
+  const ActualHome = await getDynamicComponentForRoleNPage("home");
   return (
     <Suspense fallback={<DefaultHome />}>
       <ActualHome />
